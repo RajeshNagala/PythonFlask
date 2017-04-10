@@ -7,7 +7,7 @@ from app.static.models import jiramodelsmodule
 class myjiraclient(object):
     def __init__(self):
         self.options = {'server': 'https://jira.ddhive.com/'}
-        self.jira = JIRA(options=self.options, basic_auth=('rnagala', 'RamanaLaxmi02'))
+        self.jira = JIRA(options=self.options, basic_auth=('rnagala', 'Rajesh0126'))
 
     def getprojectlist(self):
         return self.jira.projects()
