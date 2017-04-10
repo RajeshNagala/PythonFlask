@@ -7,16 +7,16 @@ from app.static.models import jiramodelsmodule
 class myjiraclient(object):
     def __init__(self):
         self.options = {'server': 'https://jira.ddhive.com/'}
-        self.jira = JIRA(options=self.options, basic_auth=('labattula', 'Bat123456!'))
+        self.jira = JIRA(options=self.options, basic_auth=('rnagala', 'RamanaLaxmi02'))
 
     def getprojectlist(self):
         return self.jira.projects()
 
     def getIssuesInProject(self, project):
-        return self.jira.search_issues('project=BBBY')
+        return self.jira.search_issues('project=Regis')
 
     def allProjectIssues(self):
-        return self.jira.search_issues('project=BBBY and assignee != currentUser()')
+        return self.jira.search_issues('project=Regis and assignee != currentUser()')
 
     def getCurrentUserIssues(self, maxResults):
         ''' oh_crap = jira.search_issues('assignee = currentUser() and due < endOfWeek() order by priority desc', maxResults=5)'''
