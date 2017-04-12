@@ -7,6 +7,8 @@ from app.static import climatemodule
 from app.static import gihubmodule
 from app.static import mycirclecimodule
 from app.static import jiramodule
+from app.static import RestAPI
+
 
 import json
 import requests
@@ -138,12 +140,16 @@ def accesscircleci(sessionId):
 
 @app.route('/jiraissues', methods=['POST', 'GET'])
 def getJiraIssues():
-    jiraclient = jiramodule.myjiraclient()
-    # for jiraIssue in jiraclient.getCurrentUserIssues(maxResults=10):
-    #     print(jiraclient.getIssuedetails(jiraIssue).fields.summary)
-    results = jiraclient.getCurrentUserIssues(maxResults=10)
-    return buildResponse(speech=results, displayText=results, contextOut=None, source="lakshman web hook",
-                         responseCode=200)
+    # jiraclient = jiramodule.myjiraclient()
+    # # for jiraIssue in jiraclient.getCurrentUserIssues(maxResults=10):
+    # #     print(jiraclient.getIssuedetails(jiraIssue).fields.summary)
+    # results = jiraclient.getCurrentUserIssues(maxResults=10)
+    # return buildResponse(speech=results, displayText=results, contextOut=None, source="lakshman web hook",
+    #                      responseCode=200)
+      restClient = RestAPI.restClient()
+      results = restClient.getCurrentUserIssues()
+      return buildResponse(speech=results, displayText=results, contextOut=None, source="Rajesh Test",
+                          responseCode=200)
 
 
 @app.route('/buildhook', methods=['POST', 'GET'])
